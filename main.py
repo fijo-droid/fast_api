@@ -1,11 +1,11 @@
 from  fastapi import FastAPI,Depends,status,Response,HTTPException
-from  .import schemas,models
-from  .import engine, sessionlocal
+from  database import engine, sessionlocal
 from sqlalchemy.orm import session
+from . database import Base
+from . import schemas,models
 
 
 app=FastAPI()
-
 models.Base.metadata.create_all(engine)
 
 def get_db():
